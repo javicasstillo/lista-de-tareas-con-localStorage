@@ -8,12 +8,15 @@ cargarDOM()
 
 btnAgregar.addEventListener("click", (e)=>{
     e.preventDefault()
+    let itemId = crypto.randomUUID()
+    console.log(itemId)
     let input = document.getElementById("input").value
     const li = document.createElement("li")
     li.classList.add("list-group-item", "d-flex", "align-items-center", "justify-content-between")
     li.textContent = input
     ul.appendChild(li)
-    guardar(input)
+    
+    guardar(input, itemId)
 
     const btnEliminar = document.createElement("button")
     btnEliminar.classList.add("btn", "btn-outline-danger")
@@ -25,6 +28,10 @@ btnAgregar.addEventListener("click", (e)=>{
 
     btnEliminar.addEventListener("click", ()=>{
         li.remove()
+        let lista = JSON.parse(localStorage.getItem('miLista')) || []
+        const posicionContactoBuscado = lista.findIndex((item) => item.id === itemId)
+        lista.splice(posicionContactoBuscado, 1)
+        localStorage.setItem('miLista', JSON.stringify(lista))
     })
 
     
@@ -39,9 +46,9 @@ btnAgregar.addEventListener("click", (e)=>{
     
 })
 
-function guardar(input){
+function guardar(input, itemId){
     let lista = JSON.parse(localStorage.getItem('miLista')) || []
-    lista.push(input)
+    lista.push({valor: input, id: itemId})
     localStorage.setItem('miLista', JSON.stringify(lista) )
 }
 
@@ -61,8 +68,12 @@ function cargarDOM(){
 
 
         btnEliminar.addEventListener("click", ()=>{
-            li.remove()
-        })
+        li.remove()
+        let lista = JSON.parse(localStorage.getItem('miLista')) || []
+        const posicionContactoBuscado = lista.findIndex((item) => item.id === itemId)
+        lista.splice(posicionContactoBuscado, 1)
+        localStorage.setItem('miLista', JSON.stringify(lista))
+    })
 
         
         btnBorrarTodo.classList.add("btn", "btn-danger")
