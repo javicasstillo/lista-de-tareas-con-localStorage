@@ -33,7 +33,7 @@ btnAgregar.addEventListener("click", (e)=>{
     btnEliminar.addEventListener("click", ()=>{
         Swal.fire({
             icon: "error",
-            title: "Item Eliminado",
+            title: "Item eliminado de la lista",
         });
         li.remove()
         let lista = JSON.parse(localStorage.getItem('miLista')) || []
@@ -77,7 +77,7 @@ function cargarDOM(){
         btnEliminar.addEventListener("click", ()=>{
         Swal.fire({
             icon: "error",
-            title: "Item Eliminado",
+            title: "Item eliminado de la lista",
         });
         li.remove()
         let lista = JSON.parse(localStorage.getItem('miLista')) || []
