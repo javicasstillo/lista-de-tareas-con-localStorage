@@ -8,6 +8,10 @@ cargarDOM()
 
 btnAgregar.addEventListener("click", (e)=>{
     e.preventDefault()
+    Swal.fire({
+        title: "Item agregado a la lista",
+        icon: "success"
+    });
     let itemId = crypto.randomUUID()
     console.log(itemId)
     let input = document.getElementById("input").value
@@ -27,6 +31,10 @@ btnAgregar.addEventListener("click", (e)=>{
     formulario.reset()
 
     btnEliminar.addEventListener("click", ()=>{
+        Swal.fire({
+            icon: "error",
+            title: "Item Eliminado",
+        });
         li.remove()
         let lista = JSON.parse(localStorage.getItem('miLista')) || []
         const posicionContactoBuscado = lista.findIndex((item) => item.id === itemId)
@@ -39,7 +47,6 @@ btnAgregar.addEventListener("click", (e)=>{
     btnBorrarTodo.textContent = "Borrar Lista"
     btnBorrarTodo.addEventListener("click", ()=>{
         localStorage.removeItem('miLista')
-        
     })
     contenedorBoton.appendChild(btnBorrarTodo)
     
@@ -68,6 +75,10 @@ function cargarDOM(){
 
 
         btnEliminar.addEventListener("click", ()=>{
+        Swal.fire({
+            icon: "error",
+            title: "Item Eliminado",
+        });
         li.remove()
         let lista = JSON.parse(localStorage.getItem('miLista')) || []
         const posicionContactoBuscado = lista.findIndex((item) => item.id === itemId)
