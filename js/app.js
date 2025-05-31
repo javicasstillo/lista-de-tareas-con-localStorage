@@ -13,7 +13,6 @@ btnAgregar.addEventListener("click", (e)=>{
         icon: "success"
     });
     let itemId = crypto.randomUUID()
-    console.log(itemId)
     let input = document.getElementById("input").value
     const li = document.createElement("li")
     li.classList.add("list-group-item", "d-flex", "align-items-center", "justify-content-between")
@@ -79,7 +78,7 @@ function cargarDOM(){
         
         li.remove()
         let lista = JSON.parse(localStorage.getItem('miLista')) || []
-        const posicionContactoBuscado = lista.findIndex((item) => item.id === itemId)
+        const posicionContactoBuscado = lista.findIndex((item) => item.id === itemLista)
         lista.splice(posicionContactoBuscado, 1)
         localStorage.setItem('miLista', JSON.stringify(lista))
         Swal.fire({
