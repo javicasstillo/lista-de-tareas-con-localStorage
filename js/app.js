@@ -57,7 +57,7 @@ function cargarDOM(){
     lista.forEach(itemLista => {
         const li = document.createElement("li")
         li.classList.add("list-group-item", "d-flex", "align-items-center", "justify-content-between")
-        li.textContent = itemLista
+        li.textContent = itemLista.valor
         ul.appendChild(li)
 
         const btnEliminar = document.createElement("button")
