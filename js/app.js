@@ -31,15 +31,16 @@ btnAgregar.addEventListener("click", (e)=>{
     formulario.reset()
 
     btnEliminar.addEventListener("click", ()=>{
-        Swal.fire({
-            icon: "error",
-            title: "Item eliminado de la lista",
-        });
+        
         li.remove()
         let lista = JSON.parse(localStorage.getItem('miLista')) || []
         const posicionContactoBuscado = lista.findIndex((item) => item.id === itemId)
         lista.splice(posicionContactoBuscado, 1)
         localStorage.setItem('miLista', JSON.stringify(lista))
+        Swal.fire({
+            icon: "error",
+            title: "Item eliminado de la lista",
+        });
     })
 
     
@@ -75,15 +76,16 @@ function cargarDOM(){
 
 
         btnEliminar.addEventListener("click", ()=>{
-        Swal.fire({
-            icon: "error",
-            title: "Item eliminado de la lista",
-        });
+        
         li.remove()
         let lista = JSON.parse(localStorage.getItem('miLista')) || []
         const posicionContactoBuscado = lista.findIndex((item) => item.id === itemId)
         lista.splice(posicionContactoBuscado, 1)
         localStorage.setItem('miLista', JSON.stringify(lista))
+        Swal.fire({
+            icon: "error",
+            title: "Item eliminado de la lista",
+        });
     })
 
         
